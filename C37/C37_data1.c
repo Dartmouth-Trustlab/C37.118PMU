@@ -13,8 +13,28 @@ const int OPT = 1;
 HParsedToken *act_FRAMESIZE(const HParseResult *p, void *user_data){
   uint16_t val = p->ast->uint;
   const HParsedToken *ret = H_MAKE_UINT(val);
+  h_pprint(stdout, ret, 0, 1);
   printf("%d\n", val);
   return ret;
+}
+
+HParsedToken *act_Repeated_Fields(const HParseResult *p, void *user_data){
+  HCountedArray *t = p->ast->seq;
+  printf("%zu\n", t->used);
+  h_pprint(stdout, h_act_flatten(p, NULL), 0, 1);
+  return p;
+}
+
+HParsedToken *act_TEMP_parse(const HParseResult *p, void *user_data){
+  HCountedArray *t = p->ast->seq;
+  h_pprint(stdout, h_act_flatten(p, NULL), 0, 1);
+  return p;
+}
+
+HParsedToken *act_Final_parse(const HParseResult *p, void *user_data){
+  HCountedArray *t = p->ast->seq;
+  h_pprint(stdout, h_act_flatten(p, NULL), 0, 1);
+  return p;
 }
 
 void init_parser(){
@@ -31,7 +51,7 @@ void init_parser(){
   H_RULE(SYNC_parse, h_sequence(SYNC, h_bits(4, false), NULL));
   // This will parse the first 9 bits of SYNC, then the frame-identifier, then the last 4 bits that we don't care about
   
-  H_ARULE(FRAMESIZE, Bytes2);
+  H_RULE(FRAMESIZE, Bytes2);
   // This will be FRAMESIZE
   // FRAMESIZE is the number of BYTES in the frame
   // We will need to check this against PHNMR, ANNMR, and DGNMR
@@ -89,7 +109,8 @@ void init_parser(){
   H_RULE(DIGITAL, h_many(Bytes2));
   //H_RULE(DIGITAL, h_bits(DGNMR*16, false));
 
-  HParser *Repeated_Fields = h_sequence(STAT, PHASORS, FREQ, DFREQ, ANALOG, DIGITAL, NULL); 
+  H_ARULE(Repeated_Fields, h_many1(h_sequence(STAT, NULL))); 
+  //H_ARULE(Repeated_Fields, h_many1(h_sequence(STAT, PHASORS, FREQ, DFREQ, ANALOG, DIGITAL, NULL))); 
 
   H_RULE(CHK, Bytes2);
 
@@ -107,11 +128,11 @@ void init_parser(){
   HParser *Configuration_Parse = h_sequence(SYNC_parse, FRAMESIZE, IDCODE, SOC, FRACSEC, TIME_BASE, NUM_PMU, Repeat_the_Fields, DATA_RATE, CHK);
 */
   //For testing
-  H_RULE(TEMP_parse, h_sequence(SYNC_parse, FRAMESIZE, IDCODE_1, SOC, FRACSEC, NULL));
+  H_ARULE(TEMP_parse, h_sequence(SYNC_parse, FRAMESIZE, IDCODE_1, SOC, FRACSEC, NULL));
 
-  H_RULE(Final_parse, h_sequence(SYNC_parse, FRAMESIZE, IDCODE_1, SOC, FRACSEC, h_many(Repeated_Fields), Bytes2, NULL));
+  H_ARULE(Final_parse, h_sequence(SYNC_parse, FRAMESIZE, IDCODE_1, SOC, FRACSEC, Repeated_Fields, CHK, NULL));
 
-  C37_parser = Final_parse;
+  C37_parser = TEMP_parse;
   
 }
 
