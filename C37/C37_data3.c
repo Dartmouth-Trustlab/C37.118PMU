@@ -138,7 +138,6 @@ void updateArgs(int i){
   if(s > 1){
     currPOPT = 2;
   }
-  printf("%d %d %d\n", currDOPT, currAOPT, currPOPT);
 }
 
 int main(int argc, char *argv[]) {
