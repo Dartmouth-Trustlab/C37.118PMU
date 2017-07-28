@@ -9,6 +9,29 @@ int matrix[][6];
 int used_bytes = 0;
 int currPMU = 0;
 
+size_t process(uint8_t *input, size_t inputsize){
+  if(inputsize%2 != 0){
+    return 0;
+  }
+  for(int i=0; i < inputsize; i++){
+      //printf("%d\n", input[i]);
+      if(input[i] < 58 & input[i] > 47){
+        input[i] -= 48;
+      } else if(input[i] > 96 & input[i] < 104){
+        input[i] -= 87;
+      } else {
+        printf("%d, Aaah!\n", input[i]);
+        return 0;
+      }
+      if(1 == i%2){
+        input[i/2] += input[i];
+      } else {
+        input[i/2] = (input[i]*16);
+      }
+    }
+  return inputsize/2;
+}
+
 bool validate_SYNC_val(HParseResult *p, void *user_data){
   uint16_t sync = p->ast->uint;
   if(43569 == sync | 43553 == sync){
@@ -28,6 +51,7 @@ bool validate_NUM_PMU_val(HParseResult *p, void *user_data){
 }
 
 bool validate_Final_check(HParseResult *p, void *user_data){
+  h_pprint(stdout, h_act_flatten(p, NULL), 0 , 1);
   uint16_t framesize = h_act_index(1, p, NULL)->uint;
   printf("framesize = %hu\n", framesize);
   uint16_t idcode = h_act_index(2, p, NULL)->uint;
@@ -161,15 +185,15 @@ void init_parser(){
   
 }
 
-int main(int argc, char *argv[]) {
+int config() {
     init_parser();
-
 
     uint8_t input[102400];
     size_t inputsize;
 
     inputsize = fread(input, 1, sizeof(input), stdin);
     printf("%lu\n", inputsize);
+    inputsize = process(input, inputsize);
     HParseResult *result = h_parse(Well_formed, input, inputsize);
     if(result) {
         printf("yay!\n");
@@ -199,7 +223,7 @@ int main(int argc, char *argv[]) {
             HParseResult *ongoing = h_parse(To_Date, input, inputsize);
             if(!ongoing){
               printf("Error\n");
-              return 2;
+              return 3;
             }
             H_RULE(NAMES, h_sequence(h_repeat_n(CHNAM, matrix[i][2]), h_repeat_n(CHNAM, matrix[i][3]), h_repeat_n(CHNAM, 16*matrix[i][4]), NULL));
             H_RULE(To_Date1, h_sequence(h_repeat_n(junk, used_bytes), NAMES, h_repeat_n(PHUNIT, matrix[i][2]), h_repeat_n(ANUNIT, matrix[i][3]), h_repeat_n(DIGUNIT, matrix[i][4]), FNOM, CFGCNT, NULL));
@@ -208,7 +232,7 @@ int main(int argc, char *argv[]) {
             HParseResult *ongoing1 = h_parse(To_Date1, input, inputsize);
             if(!ongoing1){
               printf("Error\n");
-              return 2;
+              return 4;
             }
           }
           H_RULE(whole, h_bits(8, false));
@@ -224,9 +248,17 @@ int main(int argc, char *argv[]) {
             return 0;
           }
         } else {
-          return 1;
+          return 5;
         }
     } else {
         printf("boo!\n");
+        return 2;
     }
+    return 1;
+}
+
+int main(){
+  config();
+  printf("%d\n", matrix[0][0]);
+  return 0;
 }
