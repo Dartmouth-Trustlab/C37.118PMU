@@ -2,43 +2,26 @@
 #include <hammer/glue.h>
 #include <stdio.h>
 #include <math.h>
+#include "./C37_tools.h"
 
 bool validate_C37_parser(HParseResult *p, void *u){
   h_pprint(stdout, h_act_flatten(p, NULL), 0, 1);
   return true;
 }
 
-size_t process(uint8_t *input, size_t inputsize){
-  if(inputsize%2 != 0){
-    return 0;
-  }
-  for(int i=0; i < inputsize; i++){
-      printf("%d\n", input[i]);
-      if(input[i] < 58 & input[i] > 47){
-        input[i] -= 48;
-      } else if(input[i] > 96 & input[i] < 104){
-        input[i] -= 87;
-      } else {
-        printf("%d, Aaah!\n", input[i]);
-        return 0;
-      }
-      if(1 == i%2){
-        input[i/2] += input[i];
-      } else {
-        input[i/2] = (input[i]*16);
-      }
-    }
-  return inputsize/2;
-}
-
 int main(int argc, char *argv[]) {
+    int c;
     uint8_t input[102400];
-    size_t inputsize;
+    size_t inputsize = 0;
     H_RULE(rep1, h_uint16());
     H_RULE(rep2, h_uint8());
     H_RULE(fix, h_uint8());
     H_VRULE(C37_parser, h_sequence(fix, rep1, rep2, fix, h_end_p(), NULL));
-    inputsize = fread(input, 1, sizeof(input), stdin);
+    while ((c = fgetc(stdin)) != EOF)
+    {
+        input[inputsize++] = (char) c;
+    }
+    printf("%lu\n", inputsize);
     inputsize = process(input, inputsize);
     printf("%lu\n", inputsize);
     HParseResult *result = h_parse(C37_parser, input, inputsize);

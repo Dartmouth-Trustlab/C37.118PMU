@@ -147,7 +147,7 @@ int main(int argc, char *argv[]) {
     uint8_t input[102400];
     size_t inputsize;
 
-    inputsize = fread(input, 1, sizeof(input), stdin);
+    inputsize = fread(input, 1, sizeof(input), configtest.txt);
     printf("%lu\n", inputsize);
     HParseResult *result = h_parse(Well_formed, input, inputsize);
     if(result) {

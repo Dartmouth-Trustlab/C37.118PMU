@@ -2,7 +2,6 @@
 #include <hammer/glue.h>
 #include <stdio.h>
 #include <math.h>
-//#include "C37_tools.h"
 
 const HParser *Well_formed;
 const HParser *Prefix;
@@ -12,7 +11,6 @@ int currPMU = 0;
 
 size_t process(uint8_t *input, size_t inputsize){
   if(inputsize%2 != 0){
-    printf("Invalid # of bytes %zu\n", inputsize);
     return 0;
   }
   for(int i=0; i < inputsize; i++){
@@ -34,36 +32,26 @@ size_t process(uint8_t *input, size_t inputsize){
   return inputsize/2;
 }
 
-//Confirms that sync bytes are aa21 or aa31. Fails if they
-// are not.
 bool validate_SYNC_val(HParseResult *p, void *user_data){
   uint16_t sync = p->ast->uint;
   if(43569 == sync | 43553 == sync){
-    printf("Sync = %hu\n", sync);
+    printf("%d\n", matrix[1][1]);
     return true;
   } else {
-    printf("Sync = %hu\n", sync);
+    printf("%hu\n", sync);
     printf("Error: invalid sync bytes. Only 0xaa21 or 0xaa31 are acceptable.\n");
     return false;
   }
 }
 
-//Sets numpmu. Never fails.
 bool validate_NUM_PMU_val(HParseResult *p, void *user_data){
   uint16_t val = p->ast->uint;
   matrix[0][5] = val;
   return true;
 }
 
-bool validate_LAZY_REP(HParseResult *p, void *user_data){
-  uint16_t val = h_act_flatten(p, NULL)->seq->used;
-  printf("# of bytes = %hu\n", val);
-  return true;
-}
-
-//For testing. Prints relevant values. Never fails.
 bool validate_Final_check(HParseResult *p, void *user_data){
-  //h_pprint(stdout, h_act_flatten(p, NULL), 0 , 1);
+  h_pprint(stdout, h_act_flatten(p, NULL), 0 , 1);
   uint16_t framesize = h_act_index(1, p, NULL)->uint;
   printf("framesize = %hu\n", framesize);
   uint16_t idcode = h_act_index(2, p, NULL)->uint;
@@ -77,7 +65,6 @@ bool validate_Final_check(HParseResult *p, void *user_data){
   return true;
 }
 
-//Stores the idcode of the current PMU.
 HParsedToken *act_IDCODE(const HParseResult *p, void *user_data){
   uint16_t val = p->ast->uint;
   HParsedToken *ret = H_MAKE_UINT(val);
@@ -85,7 +72,6 @@ HParsedToken *act_IDCODE(const HParseResult *p, void *user_data){
   return ret;
 }
 
-//Stores the format of the current PMU.
 HParsedToken *act_FORMAT(const HParseResult *p, void *user_data){
   uint16_t val = p->ast->uint;
   HParsedToken *ret = H_MAKE_UINT(val);
@@ -93,7 +79,6 @@ HParsedToken *act_FORMAT(const HParseResult *p, void *user_data){
   return ret;
 }
 
-//Stores the number of phasors of the current PMU.
 HParsedToken *act_PHNMR(const HParseResult *p, void *user_data){
   uint16_t val = p->ast->uint;
   HParsedToken *ret = H_MAKE_UINT(val);
@@ -101,7 +86,6 @@ HParsedToken *act_PHNMR(const HParseResult *p, void *user_data){
   return ret;
 }
 
-//Stores analog number of the current PMU.
 HParsedToken *act_ANNMR(const HParseResult *p, void *user_data){
   uint16_t val = p->ast->uint;
   HParsedToken *ret = H_MAKE_UINT(val);
@@ -109,7 +93,6 @@ HParsedToken *act_ANNMR(const HParseResult *p, void *user_data){
   return ret;
 }
 
-//Stores digital number of the current PMU.
 HParsedToken *act_DGNMR(const HParseResult *p, void *user_data){
   uint16_t val = p->ast->uint;
   HParsedToken *ret = H_MAKE_UINT(val);
@@ -117,8 +100,6 @@ HParsedToken *act_DGNMR(const HParseResult *p, void *user_data){
   return ret;
 }
 
-//ELEPHANT. Stores framesize and confirms that recieved packet
-// matches framesize.
 HParsedToken *act_FRAMESIZE(const HParseResult *p, void *user_data){
   uint16_t val = p->ast->uint;
   HParsedToken *ret = H_MAKE_UINT(val);
@@ -126,9 +107,12 @@ HParsedToken *act_FRAMESIZE(const HParseResult *p, void *user_data){
 }
 
 void init_parser(){
+  // SYNC
+  // Use "h_bits(len, sign)" to recognize the two SYNC bytes
+
   H_RULE(SYNC_check, h_bits(16, false));
   H_VRULE(SYNC_val, h_bits(16, false));
-  // Checks sync bytes, first 2 bytes in the message.
+  // This will parse the first 9 bits of SYNC, then the frame-identifier, then the last 4 bits that we don't care about
   
   H_RULE(FRAMESIZE_check, h_bits(16, false));
   H_RULE(FRAMESIZE_val, h_bits(16, false));
@@ -160,12 +144,9 @@ void init_parser(){
 
   H_RULE(TIME_BASE_check, h_bits(32, false));
   H_RULE(TIME_BASE_val, h_bits(32, false));
-  // More time info. Again, irrelevant for parsing.
 
   H_RULE(NUM_PMU_check, h_bits(16, false));
   H_VRULE(NUM_PMU_val, h_bits(16, false));
-  // Number of PMUs. Needs to be used to validate the 
-  // repeated frames.
 
   // THE FRAMES BECOMES DISTINCT AFTER THIS POINT
 
@@ -188,46 +169,31 @@ void init_parser(){
   //CHK 2 bytes
 
   H_RULE(DATA_RATE, h_bits(16, false));
-  // Expected data rate. Not sure if we need
-  // to match this to be valid.
 
   H_RULE(CHK, h_bits(16, false));
-  // Validation bytes.
 
   H_RULE(Postfix, h_sequence(DATA_RATE, CHK, h_end_p(), NULL));
-  // The concluding, non-repeated info for config frames
 
-  //H_RULE(LAZY_REP, h_sequence(h_many(h_bits(8, false)), h_end_p(), NULL));
-  H_VRULE(LAZY_REP, h_sequence(h_repeat_n(h_bits(8, false), 34), h_optional(h_sequence(h_repeat_n(h_bits(8, false), 20), h_many(h_repeat_n(h_bits(8, false), 10)), NULL)), h_end_p(), NULL));
-  // Tests well-formedness of repeated frames. Any well-formed frame will
-  // have either 0 or 1+ repetition of the repeated fields, and the shortest
-  // possible repeated field is 30 bytes + 4 postfix bytes. Because additional
-  // bytes are always added in multiples of 20, any well formed repeated field
-  // will have 34+20x bytes.
+  H_RULE(LAZY_REP, h_sequence(h_repeat_n(h_bits(16, false), 34), h_many(h_bits(16, false)), h_end_p(), NULL));
 
   H_VRULE(Final_check, h_sequence(SYNC_check, FRAMESIZE_check, IDCODE_check, SOC_check, FRACSEC_check, TIME_BASE_check, NUM_PMU_check, h_xor(LAZY_REP, Postfix), NULL));
-  // Final well-formedness check. Confirms that the prefix is the correct
-  // length and followed by either the postfix XOR some number of repeated
-  // frames and then the postfix.
-
 
   H_RULE(Prefix_validate, h_sequence(SYNC_val, FRAMESIZE_val, IDCODE_val, SOC_val, FRACSEC_val, TIME_BASE_val, NUM_PMU_val, NULL));
-  // Validates the prefix after it has been determined to be well formed.
 
   Well_formed = Final_check;
   Prefix = Prefix_validate;
   
 }
 
-int config(uint8_t input[], size_t inputsize) {
+int config() {
     init_parser();
 
-    printf("Inputsize = %lu\n", inputsize);
+    uint8_t input[102400];
+    size_t inputsize;
 
-    //Convert ascii file to hex.
+    inputsize = fread(input, 1, sizeof(input), stdin);
+    printf("%lu\n", inputsize);
     inputsize = process(input, inputsize);
-
-    //Check that it's well formed.
     HParseResult *result = h_parse(Well_formed, input, inputsize);
     if(result) {
         printf("yay!\n");
@@ -292,22 +258,8 @@ int config(uint8_t input[], size_t inputsize) {
 }
 
 int main(){
-  FILE *file = fopen("configtest.txt", "r");
-  int c = fgetc(file);
-  uint8_t input[102400];
-  size_t inputsize = 0;
-  printf("test\n");
-  while (c != EOF){
-      if(10 != c){
-        input[inputsize] = (char) c;
-        inputsize++;
-      } else {
-        printf("configing\n");
-        config(input, inputsize);
-        inputsize = 0;
-      }
-      c = fgetc(file);
-    }
-  printf("%d\n", matrix[0][0]);
+  if(!config()){
+    printf("yay!\n");
+  }
   return 0;
 }
