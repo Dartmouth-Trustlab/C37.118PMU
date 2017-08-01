@@ -4,12 +4,17 @@
 #include <math.h>
 #include "./C37_tools.h"
 
+int g[2];
+
 bool validate_C37_parser(HParseResult *p, void *u){
   h_pprint(stdout, h_act_flatten(p, NULL), 0, 1);
   return true;
 }
 
 int main(int argc, char *argv[]) {
+    g[0] = 1;
+    g[1] = 2;
+    printf("%d %d\n", g[0], g[1]);
     int c;
     uint8_t input[102400];
     size_t inputsize = 0;

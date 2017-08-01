@@ -13,8 +13,37 @@ int currDOPT = 1;
 int currAOPT = 2;
 int currPOPT = 2;
 
+size_t process(uint8_t *input, size_t inputsize){
+  if(inputsize%2 != 0){
+    return 0;
+  }
+  for(int i=0; i < inputsize; i++){
+      //printf("%d\n", input[i]);
+      if(input[i] < 58 & input[i] > 47){
+        input[i] -= 48;
+      } else if(input[i] > 96 & input[i] < 104){
+        input[i] -= 87;
+      } else {
+        printf("%d, Aaah!\n", input[i]);
+        return 0;
+      }
+      if(1 == i%2){
+        input[i/2] += input[i];
+      } else {
+        input[i/2] = (input[i]*16);
+      }
+    }
+  return inputsize/2;
+}
+
+bool validate_CHK(HParseResult *p, void *user_data){
+  uint16_t id = p->ast->uint;
+  printf("CHK = %hu\n", id);
+  return true;
+}
+
 bool validate_REP(HParseResult *p, void *user_data){
-  h_pprint(stdout, h_act_flatten(p, NULL), 0, 1);
+  //h_pprint(stdout, h_act_flatten(p, NULL), 0, 1);
   return true;
 }
 
@@ -61,7 +90,7 @@ HParsedToken *act_FRAMESIZE(const HParseResult *p, void *user_data){
   return ret;
 }
 
-void init_parser(){
+void init_parser2(){
   // SYNC
   // Use "h_bits(len, sign)" to recognize the two SYNC bytes
 
@@ -140,55 +169,72 @@ void updateArgs(int i){
   }
 }
 
-int main(int argc, char *argv[]) {
-    init_parser();
-
-
-    uint8_t input[102400];
-    size_t inputsize;
-
-    inputsize = fread(input, 1, sizeof(input), configtest.txt);
-    printf("%lu\n", inputsize);
-    HParseResult *result = h_parse(Well_formed, input, inputsize);
-    if(result) {
-        printf("yay!\n");
-        HParseResult *ongoing = h_parse(Prefix, input, inputsize);
-        if(ongoing){
-          used_bytes = 14;
+int data(uint8_t input[], size_t inputsize){
+  init_parser2();
+  inputsize = process(input, inputsize);
+  HParseResult *result = h_parse(Well_formed, input, inputsize);
+  if(result) {
+      printf("yay!\n");
+      HParseResult *ongoing = h_parse(Prefix, input, inputsize);
+      if(ongoing){
+        used_bytes = 14;
           
-          for(int i = 0; i < matrix[0][5]; i++){
-            updateArgs(i);
+        for(int i = 0; i < matrix[0][5]; i++){
+          updateArgs(i);
 
-            H_RULE(junk, h_bits(8, false));
+          H_RULE(junk, h_bits(8, false));
 
-            H_RULE(STAT, h_bits(16, false));
-            H_RULE(PHASOR, h_bits(32*currPOPT, false));
-            H_RULE(FREQ, h_bits(16*currDOPT, false));
-            H_RULE(DFREQ, h_bits(16*currDOPT, false));
-            H_RULE(ANALOG, h_bits(16*currAOPT, false));
-            H_RULE(DIGITAL, h_bits(16, false));
+          H_RULE(STAT, h_bits(16, false));
+          H_RULE(PHASOR, h_bits(32*currPOPT, false));
+          H_RULE(FREQ, h_bits(16*currDOPT, false));
+          H_RULE(DFREQ, h_bits(16*currDOPT, false));
+          H_RULE(ANALOG, h_bits(16*currAOPT, false));
+          H_RULE(DIGITAL, h_bits(16, false));
 
-            H_VRULE(REP, h_sequence(STAT, h_repeat_n(PHASOR, matrix[i][2]), FREQ, DFREQ, h_repeat_n(ANALOG, matrix[i][3]), h_repeat_n(DIGITAL, matrix[i][4]), NULL));
-            H_RULE(To_Date, h_sequence(h_repeat_n(junk, used_bytes), REP, NULL));
-            used_bytes += (2 + 4*currPOPT*matrix[i][2] + 2*2*currDOPT + 2*currAOPT*matrix[i][3] + 2*matrix[i][4]);
-            HParseResult *ongoing = h_parse(To_Date, input, inputsize);
-            if(!ongoing){
-              return 2;
-            }
-            printf("%d\n", used_bytes);
+          H_VRULE(REP, h_sequence(STAT, h_repeat_n(PHASOR, matrix[i][2]), FREQ, DFREQ, h_repeat_n(ANALOG, matrix[i][3]), h_repeat_n(DIGITAL, matrix[i][4]), NULL));
+          H_RULE(To_Date, h_sequence(h_repeat_n(junk, used_bytes), REP, NULL));
+          used_bytes += (2 + 4*currPOPT*matrix[i][2] + 2*2*currDOPT + 2*currAOPT*matrix[i][3] + 2*matrix[i][4]);
+          HParseResult *ongoing = h_parse(To_Date, input, inputsize);
+          if(!ongoing){
+            return 2;
           }
-          H_RULE(whole, h_bits(8, false));
-          H_RULE(CHK, h_bits(16, false));
-          H_RULE(final, h_sequence(h_repeat_n(whole, used_bytes), CHK, h_end_p(), NULL));
-          HParseResult *last = h_parse(final, input, inputsize);
-          if(last){
-            printf("Success!\n");
-            return 0;
-          }
-        } else {
-          return 1;
+          printf("%d\n", used_bytes);
         }
-    } else {
-        printf("boo!\n");
+        H_RULE(whole, h_bits(8, false));
+        H_VRULE(CHK, h_bits(16, false));
+        H_RULE(final, h_sequence(h_repeat_n(whole, used_bytes), CHK, h_end_p(), NULL));
+        HParseResult *last = h_parse(final, input, inputsize);
+        if(last){
+          printf("Success!\n");
+          return 0;
+        }
+      } else {
+        return 1;
+      }
+  } else {
+      printf("boo!\n");
+      return 2;
+  }
+  return 3;
+}
+
+int main(int argc, char *argv[]) {
+  FILE *file = fopen("datatest.txt", "r");
+  int c = fgetc(file);
+  uint8_t input[102400];
+  size_t inputsize = 0;
+  printf("test\n");
+  while (c != EOF){
+      if(10 != c){
+        input[inputsize] = (char) c;
+        inputsize++;
+      } else {
+        printf("dataing\n");
+        data(input, inputsize);
+        inputsize = 0;
+      }
+      c = fgetc(file);
     }
+  printf("%d\n", matrix[0][0]);
+  return 0;
 }
