@@ -1,14 +1,14 @@
-#
-# Makefile
-# anatharaman, 2017-07-26 14:31
-#
+CC = gcc
+DEPS = C37_tools.h
+OBJ = config.o tools.o
+LNK = -lhammer `pkg-config --libs --cflags glib-2.0`
 
-all:
-	clang -o C37_config1 C37_config1.c `pkg-config --cflags --libs libhammer`
-	clang -o C37_data1 C37_data1.c `pkg-config --cflags --libs libhammer`
-	clang -o C37_data3 C37_data3.c `pkg-config --cflags --libs libhammer`
-	clang -o C37_datat C37_datat.c `pkg-config --cflags --libs libhammer`
+dt: $(OBJ)
+	$(CC) -o $@ $^ $(LNK)
 
-# vim:ft=make
-#
+config.o: C37_config1.c $(DEPS)
+	$(CC) -c -o $@ $<
+
+tools.o: C37_tools.c $(DEPS)
+	$(CC) -c -o $@ $<
 
