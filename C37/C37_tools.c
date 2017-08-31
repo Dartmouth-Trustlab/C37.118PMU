@@ -4,6 +4,8 @@
 #include <math.h>
 #include "C37_tools.h"
 
+#define VERBOSE false
+
 extern const HParser *Well_formed;
 extern const HParser *Prefix;
 extern int matrix[][6];
@@ -16,6 +18,7 @@ extern int fsize;
 extern int getCON;
 extern int getDATA;
 extern int getHEAD;
+extern int desiredID;
 
 size_t process(uint8_t *input, size_t inputsize){
   if(inputsize%2 != 0){
@@ -60,7 +63,7 @@ void updateArgs(int i){
 bool validate_conSYNC_val(HParseResult *p, void *user_data){
   uint16_t sync = p->ast->uint;
   if(43569 == sync | 43553 == sync){
-    printf("Sync = %hu\n", sync);
+    if(VERBOSE)printf("Sync = %hu\n", sync);
     return true;
   } else {
     printf("Sync = %hu\n", sync);
@@ -86,15 +89,15 @@ bool validate_LAZY_REP(HParseResult *p, void *user_data){
 bool validate_Final_check(HParseResult *p, void *user_data){
   //h_pprint(stdout, h_act_flatten(p, NULL), 0 , 1);
   uint16_t framesize = h_act_index(1, p, NULL)->uint;
-  printf("framesize = %hu\n", framesize);
+  if(VERBOSE)printf("framesize = %hu\n", framesize);
   uint16_t idcode = h_act_index(2, p, NULL)->uint;
-  printf("idcode = %hu\n", idcode);
+  if(VERBOSE)printf("idcode = %hu\n", idcode);
   uint16_t soc = h_act_index(3, p, NULL)->uint;
-  printf("soc = %hu\n", soc);
+  if(VERBOSE)printf("soc = %hu\n", soc);
   uint16_t fracsec = h_act_index(4, p, NULL)->uint;
-  printf("fracsec = %hu\n", fracsec);
+  if(VERBOSE)printf("fracsec = %hu\n", fracsec);
   uint16_t chk = h_act_last(p, NULL)->uint;
-  printf("chk = %hu\n", chk);
+  if(VERBOSE)printf("chk = %hu\n", chk);
   return true;
 }
 
@@ -317,7 +320,7 @@ int config(uint8_t input[], size_t inputsize){
 /***********************/
 bool validate_CHK(HParseResult *p, void *user_data){
   uint16_t id = p->ast->uint;
-  printf("CHK = %hu\n", id);
+  if(VERBOSE)printf("CHK = %hu\n", id);
   return true;
 }
 
@@ -466,30 +469,6 @@ int data(uint8_t input[], size_t inputsize){
   }
   printf("ERROR\n");
   return 3;
-}
-
-bool validate_SYNC_TYPE(HParseResult *p, void *user_data){
-  uint16_t sync = p->ast->uint;
-  if(43569 == sync | 43553 == sync){
-    printf("Sync = %hu, config\n", sync);
-    currTYPE = 1;
-    return true;
-  } else if(43521 == sync){
-    printf("Sync = %hu, data\n", sync);
-    currTYPE = 2;
-    return true;
-  } else if(43585 == sync){
-    printf("Sync = %hu, command\n", sync);
-    currTYPE = 3;
-    return true;
-  } else if(43537 == sync){
-    printf("Sync = %hu, header\n", sync);
-    currTYPE = 4;
-    return true;
-  } else {
-    printf("Sync = %hu, ???\n", sync);
-    return false;
-  }
 }
 
 bool validate_comSYNC_val(HParseResult *p, void *user_data){
@@ -714,12 +693,52 @@ int header(uint8_t input[], size_t inputsize){
   return 3;
 }
 
+bool validate_SYNC_TYPE(HParseResult *p, void *user_data){
+  uint16_t sync = p->ast->uint;
+  if(43569 == sync | 43553 == sync){
+    if(VERBOSE)printf("Sync = %hu, config\n", sync);
+    currTYPE = 1;
+    return true;
+  } else if(43521 == sync){
+    if(VERBOSE)printf("Sync = %hu, data\n", sync);
+    currTYPE = 2;
+    return true;
+  } else if(43585 == sync){
+    if(VERBOSE)printf("Sync = %hu, command\n", sync);
+    currTYPE = 3;
+    return true;
+  } else if(43537 == sync){
+    if(VERBOSE)printf("Sync = %hu, header\n", sync);
+    currTYPE = 4;
+    return true;
+  } else {
+    printf("Sync = %hu, ???\n", sync);
+    return false;
+  }
+}
+
+bool validate_STREAM_ID(HParseResult *p, void *user_data){
+  uint16_t ID = p->ast->uint;
+  desiredID = ID;
+  if(VERBOSE)printf("Stream ID = %d\n", ID);
+  return true;
+}
+
 int choose(uint8_t input[], size_t inputsize){
   //inputsize = process(input, inputsize);
   H_VRULE(SYNC_TYPE, h_bits(16, false));
   HParseResult *temp = h_parse(SYNC_TYPE, input, inputsize);
   if(temp){
-    return 1;
+    H_RULE(Padding, h_bits(32, false));
+    H_VRULE(STREAM_ID, h_bits(16, false));
+    H_RULE(FINAL, h_sequence(Padding, STREAM_ID, NULL));
+    HParseResult *temp2 = h_parse(FINAL, input, inputsize);
+    if(temp2){
+      return 1;
+    } else {
+      printf("Error: no framesize/ID.\n");
+      return 0;
+    }
   } else {
     printf("Error: The sync byte matches no known standard/isn't long enough.\n");
     return 0;
