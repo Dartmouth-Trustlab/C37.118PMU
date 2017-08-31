@@ -1,6 +1,7 @@
 #include <hammer/hammer.h>
 #include <hammer/glue.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <math.h>
 #include "C37_tools.h"
 
@@ -45,7 +46,7 @@ int streamPos = 0; //Last used stream index
 //    0    |        1       
 int streams[MAX_STREAMS][2];
 //Data addresses
-AllData settings[MAX_STREAMS];
+AllData *settings[MAX_STREAMS];
 //Is this a previously unknown stream?
 bool newStream = false;
 
@@ -95,7 +96,7 @@ int main(){
               //If you find the current ID...
               if(desiredID == streams[i][0]){
                 //Set the globals to its saved values
-                updateGlobals(&settings[i]);
+                updateGlobals(settings[i]);
                 //It's not a new stream
                 newStream = false;
                 //Update the id and last used stream
@@ -114,7 +115,7 @@ int main(){
             // parser and update the settings.
             if(1 == getCON && !newStream){
               result = config(input, inputsize);
-              updateLocals(&settings[streamPos]);
+              updateLocals(settings[streamPos]);
             } else {
               result = -1;
               printf("Warning: Config recieved without being requested. Ignoring.\n");
@@ -123,7 +124,7 @@ int main(){
           } else if (2 == currTYPE && !newStream){
             if(1 == getDATA){
               result = data(input, inputsize);
-              updateLocals(&settings[streamPos]);
+              updateLocals(settings[streamPos]);
             } else {
               result = -1;
               printf("Warning: Data recieved without being requested. Ignoring.\n");
@@ -132,10 +133,10 @@ int main(){
             if(newStream){
               int size = streams[0][1]; //For convenience
               //Initialize a new alldata object
-              AllData new;
-              new.getCON = new.getHEAD = new.getDATA = 0;
-              new.matrix[0][5] = 0;
-              updateGlobals(&new);
+              AllData *new = malloc(3000);
+              new->getCON = new->getHEAD = new->getDATA = 0;
+              new->matrix[0][5] = 0;
+              updateGlobals(new);
               if(DEBUG)printf("desiredID = %d\n", desiredID);
               streams[size][0] = desiredID;
               streams[0][1] = size + 1;
@@ -146,19 +147,19 @@ int main(){
               if(DEBUG)printf("******************\n");
               for(int i = 0; i <= size; i++){
                 if(DEBUG)printf("id = %d, address = %d, size = %d, i=%d\n", streams[i][0], &settings[i], streams[0][1], i);
-                if(DEBUG)printf("\t matrix[0][0] = %d\n", settings[i].matrix[0][0]);
+                if(DEBUG)printf("\t matrix[0][0] = %d\n", settings[i]->matrix[0][0]);
               }
               result = command(input, inputsize);
-              updateLocals(&settings[streamPos]);
+              updateLocals(settings[streamPos]);
             } else {
               result = command(input, inputsize);
-              updateLocals(&settings[streamPos]);
+              updateLocals(settings[streamPos]);
             }
             //Same for header
           } else if (4 == currTYPE && !newStream){
             if(1 == getHEAD){
               result = header(input, inputsize);
-              updateLocals(&settings[streamPos]);
+              updateLocals(settings[streamPos]);
             } else {
               result = -1;
               printf("Warning: Header recieved without being requested. Ignoring.\n");
@@ -179,6 +180,10 @@ int main(){
       //Get the next character
       c = fgetc(file);
     }
+  //clean up
+  for(int i = 0; i<streams[0][1]; i++){
+    free(settings[i]);
+  }
   printf("Read %d packets, %d valid\n", total, validTotal);
   return 0;
 }
