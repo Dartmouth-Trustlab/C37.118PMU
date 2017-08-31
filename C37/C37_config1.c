@@ -5,6 +5,7 @@
 #include <math.h>
 #include "C37_tools.h"
 
+#define MAX_PMUS 40
 #define MAX_STREAMS 100
 #define DEBUG true
 
@@ -13,7 +14,7 @@ const HParser *Prefix;
 //Formats for any number of PMUs. In order:
 //IDcode|DataFormat|#ofPhasors|#ofAnalogs|#ofDigital|#ofPMUs(1st PMU only)
 //   0  |    1     |     2    |     3    |     4    |    5
-int matrix[][6];
+int matrix[MAX_PMUS][6];
 int currPMU = 0;
 int currDOPT = 0;
 int currAOPT = 0;
@@ -36,7 +37,7 @@ typedef struct AllDatas {
   int getCON;
   int getDATA;
   int getHEAD;
-  int matrix[][6];
+  int matrix[MAX_PMUS][6];
 } AllData;
 
 //Local variables
@@ -115,7 +116,7 @@ int main(){
             // parser and update the settings.
             if(1 == getCON && !newStream){
               result = config(input, inputsize);
-              updateLocals(settings[streamPos]);
+              if(DEBUG)printf("pos=%d\n", streamPos);
             } else {
               result = -1;
               printf("Warning: Config recieved without being requested. Ignoring.\n");
