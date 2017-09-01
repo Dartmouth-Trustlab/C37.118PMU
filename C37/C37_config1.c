@@ -67,7 +67,7 @@ int main(){
   //Set valid packets read
   int validTotal = 0;
   //Open the source file
-  FILE *file = fopen("streamtest.txt", "r");
+  FILE *file = fopen("fulltest.txt", "r");
   int c = fgetc(file);
   uint8_t input[102400];
   size_t inputsize = 0;

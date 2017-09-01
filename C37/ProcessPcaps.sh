@@ -58,9 +58,8 @@ do
   done
 
   # Here is the best place to trim the garbage
-
   sed 's/ aa/\
-aa/' allhex.txt > tmp.txt
++aa/' allhex.txt > tmp.txt
   	cat tmp.txt > allhex.txt
 
 
@@ -94,6 +93,13 @@ aa/' allhex.txt > tmp.txt
 
   sed -e ':a' -e 'N' -e '$!ba' -e 's/\n/ /g' allhex.txt | sed s/" "//g > fulltest.txt
   # Removes all of the new lines and spaces
+  sed 's/+//' fulltest.txt > tmp.txt
+  # Deletes the first +
+  tr + '\n' <tmp.txt > fulltest.txt
+  # Replaces all subsequent ones with newlines
+  echo '' >> fulltest.txt
+  # Adds a final newline
+
 
   rm allhex.txt
   rm tmp.txt
