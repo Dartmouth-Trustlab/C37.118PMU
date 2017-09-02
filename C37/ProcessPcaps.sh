@@ -47,6 +47,7 @@ do
   # Removes the first '+'
   # Replaces the rest of the '+'s with newlines
 
+  rm headlessPCAP.pcap
   rm allhex.txt
   rm tmp.txt
 
