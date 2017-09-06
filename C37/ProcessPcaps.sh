@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PCAP=$(find ./thePcaps -name "*.pcap" )
+PCAP=$(find ../dataset -name "*.pcap" )
 
 
 for pcap in $PCAP
