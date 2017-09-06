@@ -1,4 +1,4 @@
 
-Put all of the pcaps in this directory!
+This directory is no longer used for anything.
 
-The one here now is just a sample.
+I realized that the .pcap's were supposed to go in the "dataset" directory.
