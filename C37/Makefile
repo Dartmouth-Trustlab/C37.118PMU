@@ -12,3 +12,5 @@ config.o: C37_config1.c $(DEPS)
 tools.o: C37_tools.c $(DEPS)
 	$(CC) -c -o $@ $< -ggdb
 
+clean:
+	rm tools.o dt config.o
