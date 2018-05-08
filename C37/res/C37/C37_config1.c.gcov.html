@@ -1,0 +1,309 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - C37_tools.info - C37/C37_config1.c</title>
+  <link rel="stylesheet" type="text/css" href="../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../index.html">top level</a> - <a href="index.html">C37</a> - C37_config1.c<span style="font-size: 80%;"> (source / <a href="C37_config1.c.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">C37_tools.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">90</td>
+            <td class="headerCovTableEntry">113</td>
+            <td class="headerCovTableEntryMed">79.6 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2018-04-29 21:00:11</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">4</td>
+            <td class="headerCovTableEntry">4</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : #include &lt;hammer/hammer.h&gt;</a>
+<span class="lineNum">       2 </span>            : #include &lt;hammer/glue.h&gt;
+<span class="lineNum">       3 </span>            : #include &lt;stdio.h&gt;
+<span class="lineNum">       4 </span>            : #include &lt;stdlib.h&gt;
+<span class="lineNum">       5 </span>            : #include &lt;math.h&gt;
+<span class="lineNum">       6 </span>            : #include &quot;C37_tools.h&quot;
+<span class="lineNum">       7 </span>            : 
+<span class="lineNum">       8 </span>            : #define MAX_PMUS 40
+<span class="lineNum">       9 </span>            : #define MAX_STREAMS 100
+<span class="lineNum">      10 </span>            : #define DEBUG true
+<span class="lineNum">      11 </span>            : 
+<span class="lineNum">      12 </span>            : const HParser *Well_formed;
+<span class="lineNum">      13 </span>            : const HParser *Prefix;
+<span class="lineNum">      14 </span>            : //Formats for any number of PMUs. In order:
+<span class="lineNum">      15 </span>            : //IDcode|DataFormat|#ofPhasors|#ofAnalogs|#ofDigital|#ofPMUs(1st PMU only)
+<span class="lineNum">      16 </span>            : //   0  |    1     |     2    |     3    |     4    |    5
+<span class="lineNum">      17 </span>            : int matrix[MAX_PMUS][6];
+<span class="lineNum">      18 </span>            : int currPMU = 0;
+<span class="lineNum">      19 </span>            : int currDOPT = 0;
+<span class="lineNum">      20 </span>            : int currAOPT = 0;
+<span class="lineNum">      21 </span>            : int currPOPT = 0;
+<span class="lineNum">      22 </span>            : int currTYPE = 0;
+<span class="lineNum">      23 </span>            : int fsize = 0;
+<span class="lineNum">      24 </span>            : int getCON = 0;
+<span class="lineNum">      25 </span>            : int getDATA = 0;
+<span class="lineNum">      26 </span>            : int getHEAD = 0;
+<span class="lineNum">      27 </span>            : int desiredID = 0; //What the stream ID claims
+<span class="lineNum">      28 </span>            : 
+<span class="lineNum">      29 </span>            : //All global data except current type, since this is updated after type is
+<span class="lineNum">      30 </span>            : // determined.
+<span class="lineNum">      31 </span>            : typedef struct AllDatas {
+<span class="lineNum">      32 </span>            :   int currPMU;
+<span class="lineNum">      33 </span>            :   int currDOPT;
+<span class="lineNum">      34 </span>            :   int currAOPT;
+<span class="lineNum">      35 </span>            :   int currPOPT;
+<span class="lineNum">      36 </span>            :   int fsize;
+<span class="lineNum">      37 </span>            :   int getCON;
+<span class="lineNum">      38 </span>            :   int getDATA;
+<span class="lineNum">      39 </span>            :   int getHEAD;
+<span class="lineNum">      40 </span>            :   int matrix[MAX_PMUS][6];
+<span class="lineNum">      41 </span>            : } AllData;
+<span class="lineNum">      42 </span>            : 
+<span class="lineNum">      43 </span>            : //Local variables
+<span class="lineNum">      44 </span>            : int streamID = 0; //Last used stream ID
+<span class="lineNum">      45 </span>            : int streamPos = 0; //Last used stream index
+<span class="lineNum">      46 </span>            : //Stream ID|# of known streams
+<span class="lineNum">      47 </span>            : //    0    |        1       
+<span class="lineNum">      48 </span>            : int streams[MAX_STREAMS][2];
+<span class="lineNum">      49 </span>            : //Data addresses
+<span class="lineNum">      50 </span>            : AllData *settings[MAX_STREAMS];
+<span class="lineNum">      51 </span>            : //Is this a previously unknown stream?
+<span class="lineNum">      52 </span>            : bool newStream = false;
+<span class="lineNum">      53 </span>            : 
+<span class="lineNum">      54 </span>            : 
+<span class="lineNum">      55 </span>            : 
+<span class="lineNum">      56 </span>            : void updateGlobals(AllData *in);
+<span class="lineNum">      57 </span>            : void updateLocals(AllData *in);
+<a name="58"><span class="lineNum">      58 </span>            : void printGlobals(void);</a>
+<span class="lineNum">      59 </span>            : 
+<span class="lineNum">      60 </span><span class="lineCov">          1 : int main(){</span>
+<span class="lineNum">      61 </span>            :   //Set # of concurrent streams to 0
+<span class="lineNum">      62 </span><span class="lineCov">          1 :   streams[0][1] = 0;</span>
+<span class="lineNum">      63 </span>            :   //Set default success to failure
+<span class="lineNum">      64 </span><span class="lineCov">          1 :   int result = -1;</span>
+<span class="lineNum">      65 </span>            :   //Set total packets read
+<span class="lineNum">      66 </span><span class="lineCov">          1 :   int total = 0;</span>
+<span class="lineNum">      67 </span>            :   //Set valid packets read
+<span class="lineNum">      68 </span><span class="lineCov">          1 :   int validTotal = 0;</span>
+<span class="lineNum">      69 </span>            :   //Open the source file
+<span class="lineNum">      70 </span><span class="lineCov">          1 :   FILE *file = fopen(&quot;fulltest.txt&quot;, &quot;r&quot;);</span>
+<span class="lineNum">      71 </span><span class="lineCov">          1 :   int c = fgetc(file);</span>
+<span class="lineNum">      72 </span>            :   uint8_t input[102400];
+<span class="lineNum">      73 </span><span class="lineCov">          1 :   size_t inputsize = 0;</span>
+<span class="lineNum">      74 </span>            :   //Until the end of the file...
+<span class="lineNum">      75 </span><span class="lineCov">      27850 :   while (c != EOF){</span>
+<span class="lineNum">      76 </span>            :       //If the current character isn't a newline, add it to the
+<span class="lineNum">      77 </span>            :       // list of read characters
+<span class="lineNum">      78 </span><span class="lineCov">      27848 :       if(10 != c){</span>
+<span class="lineNum">      79 </span><span class="lineCov">      27592 :         input[inputsize] = (char) c;</span>
+<span class="lineNum">      80 </span><span class="lineCov">      27592 :         inputsize++;</span>
+<span class="lineNum">      81 </span>            :       } else {
+<span class="lineNum">      82 </span>            :         //If there is a newline, we've reached the end of a packet. 
+<span class="lineNum">      83 </span>            :         //Convert the ascii to hex
+<span class="lineNum">      84 </span><span class="lineCov">        256 :         inputsize = process(input, inputsize);</span>
+<span class="lineNum">      85 </span>            :         //Use choose to determine the type and stream id of the packet. If it
+<span class="lineNum">      86 </span>            :         // fails, the packet is invalid
+<span class="lineNum">      87 </span><span class="lineCov">        256 :         if(choose(input, inputsize)){</span>
+<span class="lineNum">      88 </span>            :           //If you aren't still on the last stream
+<span class="lineNum">      89 </span><span class="lineCov">        256 :           if(desiredID != streamID){</span>
+<span class="lineNum">      90 </span><span class="lineCov">          1 :             if(DEBUG)printf(&quot;*--------------------*\n&quot;);</span>
+<span class="lineNum">      91 </span><span class="lineCov">          1 :             if(DEBUG)printf(&quot;desiredID = %d, streamID = %d\n&quot;, desiredID, streamID);</span>
+<span class="lineNum">      92 </span>            :             //Set newStream default to true
+<span class="lineNum">      93 </span><span class="lineCov">          1 :             newStream = true;</span>
+<span class="lineNum">      94 </span>            :             //Look through the streams you've encountered
+<span class="lineNum">      95 </span><span class="lineCov">          1 :             for(int i = 0; i &lt; streams[0][1]; i++){</span>
+<span class="lineNum">      96 </span><span class="lineNoCov">          0 :               if(DEBUG)printf(&quot;looking at id #%d\n&quot;, streams[i][0]);</span>
+<span class="lineNum">      97 </span>            :               //If you find the current ID...
+<span class="lineNum">      98 </span><span class="lineNoCov">          0 :               if(desiredID == streams[i][0]){</span>
+<span class="lineNum">      99 </span>            :                 //Set the globals to its saved values
+<span class="lineNum">     100 </span><span class="lineNoCov">          0 :                 updateGlobals(settings[i]);</span>
+<span class="lineNum">     101 </span>            :                 //It's not a new stream
+<span class="lineNum">     102 </span><span class="lineNoCov">          0 :                 newStream = false;</span>
+<span class="lineNum">     103 </span>            :                 //Update the id and last used stream
+<span class="lineNum">     104 </span><span class="lineNoCov">          0 :                 streamID = desiredID;</span>
+<span class="lineNum">     105 </span><span class="lineNoCov">          0 :                 streamPos = i;</span>
+<span class="lineNum">     106 </span><span class="lineNoCov">          0 :                 if(DEBUG)printf(&quot;Selecting stream %d, pos=%d\n&quot;, i, streamPos);</span>
+<span class="lineNum">     107 </span>            :                 //Stop looking
+<span class="lineNum">     108 </span><span class="lineNoCov">          0 :                 i=streams[0][1];</span>
+<span class="lineNum">     109 </span>            :               }
+<span class="lineNum">     110 </span>            :             }
+<span class="lineNum">     111 </span>            :           }
+<span class="lineNum">     112 </span>            :           //Switch based on type (note that type isn't stored in alldata, if
+<span class="lineNum">     113 </span>            :           // it where it would overwrite the choose function's selection)
+<span class="lineNum">     114 </span><span class="lineCov">        256 :           if(1 == currTYPE){</span>
+<span class="lineNum">     115 </span>            :             //If config was requested and this isn't a new stream, run the
+<span class="lineNum">     116 </span>            :             // parser and update the settings.
+<span class="lineNum">     117 </span><span class="lineCov">          1 :             if(1 == getCON &amp;&amp; !newStream){</span>
+<span class="lineNum">     118 </span><span class="lineCov">          1 :               result = config(input, inputsize);</span>
+<span class="lineNum">     119 </span><span class="lineCov">          1 :               if(DEBUG)printf(&quot;pos=%d\n&quot;, streamPos);</span>
+<span class="lineNum">     120 </span>            :             } else {
+<span class="lineNum">     121 </span><span class="lineNoCov">          0 :               result = -1;</span>
+<span class="lineNum">     122 </span><span class="lineNoCov">          0 :               printf(&quot;Warning: Config recieved without being requested. Ignoring.\n&quot;);</span>
+<span class="lineNum">     123 </span>            :             }
+<span class="lineNum">     124 </span>            :             //Same for data
+<span class="lineNum">     125 </span><span class="lineCov">        255 :           } else if (2 == currTYPE &amp;&amp; !newStream){</span>
+<span class="lineNum">     126 </span><span class="lineCov">        504 :             if(1 == getDATA){</span>
+<span class="lineNum">     127 </span><span class="lineCov">        252 :               result = data(input, inputsize);</span>
+<span class="lineNum">     128 </span><span class="lineCov">        252 :               updateLocals(settings[streamPos]);</span>
+<span class="lineNum">     129 </span>            :             } else {
+<span class="lineNum">     130 </span><span class="lineNoCov">          0 :               result = -1;</span>
+<span class="lineNum">     131 </span><span class="lineNoCov">          0 :               printf(&quot;Warning: Data recieved without being requested. Ignoring.\n&quot;);</span>
+<span class="lineNum">     132 </span>            :             }
+<span class="lineNum">     133 </span><span class="lineCov">          3 :           } else if (3 == currTYPE){</span>
+<span class="lineNum">     134 </span><span class="lineCov">          3 :             if(newStream){</span>
+<span class="lineNum">     135 </span><span class="lineCov">          1 :               int size = streams[0][1]; //For convenience</span>
+<span class="lineNum">     136 </span>            :               //Initialize a new alldata object
+<span class="lineNum">     137 </span><span class="lineCov">          1 :               AllData *new = malloc(3000);</span>
+<span class="lineNum">     138 </span><span class="lineCov">          1 :               new-&gt;getCON = new-&gt;getHEAD = new-&gt;getDATA = 0;</span>
+<span class="lineNum">     139 </span><span class="lineCov">          1 :               new-&gt;matrix[0][5] = 0;</span>
+<span class="lineNum">     140 </span><span class="lineCov">          1 :               updateGlobals(new);</span>
+<span class="lineNum">     141 </span><span class="lineCov">          1 :               if(DEBUG)printf(&quot;desiredID = %d\n&quot;, desiredID);</span>
+<span class="lineNum">     142 </span><span class="lineCov">          1 :               streams[size][0] = desiredID;</span>
+<span class="lineNum">     143 </span><span class="lineCov">          1 :               streams[0][1] = size + 1;</span>
+<span class="lineNum">     144 </span><span class="lineCov">          1 :               settings[size] = new;</span>
+<span class="lineNum">     145 </span><span class="lineCov">          1 :               streamID = desiredID;</span>
+<span class="lineNum">     146 </span><span class="lineCov">          1 :               newStream = false;</span>
+<span class="lineNum">     147 </span><span class="lineCov">          1 :               streamPos = size;</span>
+<span class="lineNum">     148 </span><span class="lineCov">          1 :               if(DEBUG)printf(&quot;******************\n&quot;);</span>
+<span class="lineNum">     149 </span><span class="lineCov">          2 :               for(int i = 0; i &lt;= size; i++){</span>
+<span class="lineNum">     150 </span><span class="lineCov">          1 :                 if(DEBUG)printf(&quot;id = %d, address = %d, size = %d, i=%d\n&quot;, streams[i][0], &amp;settings[i], streams[0][1], i);</span>
+<span class="lineNum">     151 </span><span class="lineCov">          1 :                 if(DEBUG)printf(&quot;\t matrix[0][0] = %d\n&quot;, settings[i]-&gt;matrix[0][0]);</span>
+<span class="lineNum">     152 </span>            :               }
+<span class="lineNum">     153 </span><span class="lineCov">          1 :               result = command(input, inputsize);</span>
+<span class="lineNum">     154 </span><span class="lineCov">          1 :               updateLocals(settings[streamPos]);</span>
+<span class="lineNum">     155 </span>            :             } else {
+<span class="lineNum">     156 </span><span class="lineCov">          2 :               result = command(input, inputsize);</span>
+<span class="lineNum">     157 </span><span class="lineCov">          2 :               updateLocals(settings[streamPos]);</span>
+<span class="lineNum">     158 </span>            :             }
+<span class="lineNum">     159 </span>            :             //Same for header
+<span class="lineNum">     160 </span><span class="lineNoCov">          0 :           } else if (4 == currTYPE &amp;&amp; !newStream){</span>
+<span class="lineNum">     161 </span><span class="lineNoCov">          0 :             if(1 == getHEAD){</span>
+<span class="lineNum">     162 </span><span class="lineNoCov">          0 :               result = header(input, inputsize);</span>
+<span class="lineNum">     163 </span><span class="lineNoCov">          0 :               updateLocals(settings[streamPos]);</span>
+<span class="lineNum">     164 </span>            :             } else {
+<span class="lineNum">     165 </span><span class="lineNoCov">          0 :               result = -1;</span>
+<span class="lineNum">     166 </span><span class="lineNoCov">          0 :               printf(&quot;Warning: Header recieved without being requested. Ignoring.\n&quot;);</span>
+<span class="lineNum">     167 </span>            :             }
+<span class="lineNum">     168 </span>            :             //Default error, should never occur.
+<span class="lineNum">     169 </span>            :           } else {
+<span class="lineNum">     170 </span><span class="lineNoCov">          0 :             result = -2;</span>
+<span class="lineNum">     171 </span><span class="lineNoCov">          0 :             printf(&quot;Error: Invalid type %d ???\n&quot;, currTYPE);</span>
+<span class="lineNum">     172 </span>            :           }
+<span class="lineNum">     173 </span>            :         }
+<span class="lineNum">     174 </span>            :         //Reset input size, increment total and valid total
+<span class="lineNum">     175 </span><span class="lineCov">        256 :         inputsize = 0;</span>
+<span class="lineNum">     176 </span><span class="lineCov">        256 :         total++;</span>
+<span class="lineNum">     177 </span><span class="lineCov">        256 :         if(0 == result){</span>
+<span class="lineNum">     178 </span><span class="lineCov">        256 :           validTotal++;</span>
+<span class="lineNum">     179 </span>            :         }
+<span class="lineNum">     180 </span>            :       }
+<span class="lineNum">     181 </span>            :       //Get the next character
+<span class="lineNum">     182 </span><span class="lineCov">      27848 :       c = fgetc(file);</span>
+<span class="lineNum">     183 </span>            :     }
+<span class="lineNum">     184 </span>            :   //clean up
+<span class="lineNum">     185 </span><span class="lineCov">          2 :   for(int i = 0; i&lt;streams[0][1]; i++){</span>
+<span class="lineNum">     186 </span><span class="lineCov">          1 :     free(settings[i]);</span>
+<span class="lineNum">     187 </span>            :   }
+<span class="lineNum">     188 </span><span class="lineCov">          1 :   printf(&quot;Read %d packets, %d valid\n&quot;, total, validTotal);</span>
+<span class="lineNum">     189 </span><span class="lineCov">          1 :   return 0;</span>
+<a name="190"><span class="lineNum">     190 </span>            : }</a>
+<span class="lineNum">     191 </span>            : 
+<span class="lineNum">     192 </span><span class="lineCov">          1 : void updateGlobals(AllData *in){</span>
+<span class="lineNum">     193 </span><span class="lineCov">          1 :   if(DEBUG)printGlobals();</span>
+<span class="lineNum">     194 </span><span class="lineCov">          1 :   currPMU = in-&gt;currPMU;</span>
+<span class="lineNum">     195 </span><span class="lineCov">          1 :   currDOPT = in-&gt;currDOPT;</span>
+<span class="lineNum">     196 </span><span class="lineCov">          1 :   currAOPT = in-&gt;currAOPT;</span>
+<span class="lineNum">     197 </span><span class="lineCov">          1 :   currPOPT = in-&gt;currPOPT;</span>
+<span class="lineNum">     198 </span><span class="lineCov">          1 :   fsize = in-&gt;fsize;</span>
+<span class="lineNum">     199 </span><span class="lineCov">          1 :   getCON = in-&gt;getCON;</span>
+<span class="lineNum">     200 </span><span class="lineCov">          1 :   getDATA = in-&gt;getDATA;</span>
+<span class="lineNum">     201 </span><span class="lineCov">          1 :   getHEAD = in-&gt;getHEAD;</span>
+<span class="lineNum">     202 </span><span class="lineCov">          1 :   for(int i = 0; i&lt;in-&gt;matrix[0][5];i++){</span>
+<span class="lineNum">     203 </span><span class="lineNoCov">          0 :     for(int j = 0; j&lt;6; j++){</span>
+<span class="lineNum">     204 </span><span class="lineNoCov">          0 :       matrix[i][j] = in-&gt;matrix[i][j];</span>
+<span class="lineNum">     205 </span>            :     }
+<span class="lineNum">     206 </span>            :   }
+<span class="lineNum">     207 </span><span class="lineCov">          1 :   if(DEBUG)printGlobals();</span>
+<a name="208"><span class="lineNum">     208 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">     209 </span>            : 
+<span class="lineNum">     210 </span><span class="lineCov">        255 : void updateLocals(AllData *in){</span>
+<span class="lineNum">     211 </span><span class="lineCov">        255 :   if(DEBUG)printf(&quot;Current matrix[i][0]=%d, global = %d\n&quot;, in-&gt;matrix[0][0], matrix[0][0]);</span>
+<span class="lineNum">     212 </span><span class="lineCov">        255 :   in-&gt;currPMU = currPMU;</span>
+<span class="lineNum">     213 </span><span class="lineCov">        255 :   in-&gt;currDOPT = currDOPT;</span>
+<span class="lineNum">     214 </span><span class="lineCov">        255 :   in-&gt;currAOPT = currAOPT;</span>
+<span class="lineNum">     215 </span><span class="lineCov">        255 :   in-&gt;currPOPT = currPOPT;</span>
+<span class="lineNum">     216 </span><span class="lineCov">        255 :   in-&gt;fsize = fsize;</span>
+<span class="lineNum">     217 </span><span class="lineCov">        255 :   in-&gt;getCON = getCON;</span>
+<span class="lineNum">     218 </span><span class="lineCov">        255 :   in-&gt;getDATA = getDATA;</span>
+<span class="lineNum">     219 </span><span class="lineCov">        255 :   in-&gt;getHEAD = getHEAD;</span>
+<span class="lineNum">     220 </span><span class="lineCov">        509 :   for(int i = 0; i&lt;matrix[0][5];i++){</span>
+<span class="lineNum">     221 </span><span class="lineCov">       1778 :     for(int j = 0; j&lt;6; j++){</span>
+<span class="lineNum">     222 </span><span class="lineCov">       1524 :       in-&gt;matrix[i][j] = matrix[i][j];</span>
+<span class="lineNum">     223 </span>            :     }
+<span class="lineNum">     224 </span>            :   }
+<span class="lineNum">     225 </span><span class="lineCov">        255 :   if(DEBUG)printf(&quot;Now matrix[i][0]=%d, global =%d\n&quot;, in-&gt;matrix[0][0], matrix[0][0]);</span>
+<a name="226"><span class="lineNum">     226 </span><span class="lineCov">        255 : }</span></a>
+<span class="lineNum">     227 </span>            : 
+<span class="lineNum">     228 </span><span class="lineCov">          2 : void printGlobals(void){</span>
+<span class="lineNum">     229 </span><span class="lineCov">          2 :   printf(&quot;\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n&quot;);</span>
+<span class="lineNum">     230 </span><span class="lineCov">          2 :   for(int i = 0; i &lt; matrix[0][5]; i++){</span>
+<span class="lineNum">     231 </span><span class="lineNoCov">          0 :     printf(&quot;%d %d %d %d %d %d\n&quot;, matrix[i][0], matrix[i][1], matrix[i][2], matrix[i][3], matrix[i][4], matrix[i][5]);</span>
+<span class="lineNum">     232 </span>            :   }
+<span class="lineNum">     233 </span><span class="lineCov">          2 : }</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.12</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

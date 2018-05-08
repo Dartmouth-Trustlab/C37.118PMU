@@ -1,0 +1,1547 @@
+Header Frame - 0.000040
+*--------------------*
+desiredID = 241, streamID = 0
+\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\
+desiredID = 241
+******************
+id = 241, address = 6314048, size = 1, i=0
+	 matrix[0][0] = 0
+Command Frame - 0.000027
+Command well formed...
+Command valid!
+Current matrix[i][0]=0, global = 0
+Now matrix[i][0]=0, global =0
+Header Frame - 0.000015
+Inputsize = 134
+Well formed - 0.000189
+Config well formed...
+Config - 0.000025
+Success! Config frame valid, settings are:
+241 6 4 0 0 1
+pos=0
+Header Frame - 0.000014
+Command Frame - 0.000023
+Command well formed...
+Command valid!
+Current matrix[i][0]=0, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000035
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000035
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000008
+Data Frame - 0.000032
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000011
+Data Frame - 0.000033
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000035
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000033
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000030
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000011
+Data Frame - 0.000042
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000011
+Data Frame - 0.000037
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000033
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000031
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000011
+Data Frame - 0.000034
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000031
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000008
+Data Frame - 0.000031
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000008
+Data Frame - 0.000034
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000034
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000034
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000008
+Data Frame - 0.000031
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000011
+Data Frame - 0.000031
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000033
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000031
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000033
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000030
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000015
+Data Frame - 0.000032
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000033
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000034
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000010
+Data Frame - 0.000033
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000011
+Data Frame - 0.000030
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000011
+Data Frame - 0.000032
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000011
+Data Frame - 0.000033
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000030
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000030
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000031
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000011
+Data Frame - 0.000033
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000010
+Data Frame - 0.000033
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000031
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000035
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000033
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000031
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000038
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000031
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000033
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000032
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000031
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000010
+Data Frame - 0.000035
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000042
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000012
+Data Frame - 0.000039
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000017
+Data Frame - 0.000030
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000012
+Data Frame - 0.000035
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000035
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000042
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000012
+Data Frame - 0.000043
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000016
+Data Frame - 0.000043
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000016
+Data Frame - 0.000043
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000019
+Data Frame - 0.000047
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000013
+Data Frame - 0.000034
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000031
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000010
+Data Frame - 0.000033
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000011
+Data Frame - 0.000041
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000012
+Data Frame - 0.000033
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000008
+Data Frame - 0.000031
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000033
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000040
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000031
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000038
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000011
+Data Frame - 0.000031
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000032
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000013
+Data Frame - 0.000036
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000031
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000037
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000033
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000034
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000010
+Data Frame - 0.000030
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000008
+Data Frame - 0.000036
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000033
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000031
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000008
+Data Frame - 0.000033
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000032
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000011
+Data Frame - 0.000031
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000033
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000011
+Data Frame - 0.000044
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000032
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000008
+Data Frame - 0.000031
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000014
+Data Frame - 0.000030
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000034
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000010
+Data Frame - 0.000032
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000033
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000031
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000011
+Data Frame - 0.000031
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000036
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000010
+Data Frame - 0.000030
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000013
+Data Frame - 0.000035
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000031
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000030
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000033
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000033
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000008
+Data Frame - 0.000032
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000030
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000008
+Data Frame - 0.000038
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000034
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000030
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000011
+Data Frame - 0.000035
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000011
+Data Frame - 0.000040
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000034
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000008
+Data Frame - 0.000036
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000031
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000031
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000030
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000012
+Data Frame - 0.000030
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000037
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000031
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000033
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000031
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000008
+Data Frame - 0.000031
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000008
+Data Frame - 0.000032
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000030
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000012
+Data Frame - 0.000035
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000032
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000031
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000011
+Data Frame - 0.000032
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000008
+Data Frame - 0.000031
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000008
+Data Frame - 0.000035
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000030
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000031
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000032
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000030
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000035
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000033
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000008
+Data Frame - 0.000034
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000036
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000008
+Data Frame - 0.000031
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000033
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000032
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000011
+Data Frame - 0.000031
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000036
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000008
+Data Frame - 0.000033
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000008
+Data Frame - 0.000032
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000011
+Data Frame - 0.000031
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000008
+Data Frame - 0.000030
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000050
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000030
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000008
+Data Frame - 0.000033
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000031
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000031
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000011
+Data Frame - 0.000032
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000033
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000034
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000011
+Data Frame - 0.000030
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000031
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000034
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000031
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000033
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000034
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000034
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000033
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000016
+Data Frame - 0.000031
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000033
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000008
+Data Frame - 0.000033
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000030
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000034
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000046
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000006
+Data Frame - 0.000023
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000006
+Data Frame - 0.000021
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000006
+Data Frame - 0.000025
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000006
+Data Frame - 0.000025
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000006
+Data Frame - 0.000022
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000006
+Data Frame - 0.000024
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000007
+Data Frame - 0.000023
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000006
+Data Frame - 0.000022
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000006
+Data Frame - 0.000024
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000006
+Data Frame - 0.000023
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000006
+Data Frame - 0.000023
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000006
+Data Frame - 0.000022
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000008
+Data Frame - 0.000021
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000006
+Data Frame - 0.000023
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000007
+Data Frame - 0.000021
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000006
+Data Frame - 0.000023
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000006
+Data Frame - 0.000022
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000007
+Data Frame - 0.000022
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000006
+Data Frame - 0.000025
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000022
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000006
+Data Frame - 0.000026
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000006
+Data Frame - 0.000022
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000006
+Data Frame - 0.000021
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000007
+Data Frame - 0.000024
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000008
+Data Frame - 0.000021
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000007
+Data Frame - 0.000023
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000006
+Data Frame - 0.000022
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000006
+Data Frame - 0.000025
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000006
+Data Frame - 0.000023
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000006
+Data Frame - 0.000022
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000009
+Data Frame - 0.000024
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000007
+Data Frame - 0.000026
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000006
+Data Frame - 0.000022
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000006
+Data Frame - 0.000024
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000007
+Data Frame - 0.000023
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000006
+Data Frame - 0.000024
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000006
+Data Frame - 0.000023
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000006
+Data Frame - 0.000021
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000007
+Data Frame - 0.000026
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000010
+Data Frame - 0.000022
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000006
+Data Frame - 0.000023
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000006
+Data Frame - 0.000022
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000006
+Data Frame - 0.000022
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000005
+Data Frame - 0.000018
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000006
+Data Frame - 0.000017
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000006
+Data Frame - 0.000020
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000005
+Data Frame - 0.000017
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000005
+Data Frame - 0.000017
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000007
+Data Frame - 0.000018
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000006
+Data Frame - 0.000017
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000004
+Data Frame - 0.000018
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000005
+Data Frame - 0.000017
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000005
+Data Frame - 0.000016
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000005
+Data Frame - 0.000017
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000004
+Data Frame - 0.000016
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000005
+Data Frame - 0.000017
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000005
+Data Frame - 0.000020
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000005
+Data Frame - 0.000016
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000006
+Data Frame - 0.000018
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000007
+Data Frame - 0.000016
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000005
+Data Frame - 0.000017
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000005
+Data Frame - 0.000018
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000005
+Data Frame - 0.000021
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000006
+Data Frame - 0.000020
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000004
+Data Frame - 0.000018
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000005
+Data Frame - 0.000018
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000006
+Data Frame - 0.000016
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000005
+Data Frame - 0.000017
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000005
+Data Frame - 0.000017
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000006
+Data Frame - 0.000017
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000005
+Data Frame - 0.000019
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000005
+Data Frame - 0.000016
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000005
+Data Frame - 0.000016
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000005
+Data Frame - 0.000018
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000006
+Data Frame - 0.000018
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000005
+Data Frame - 0.000018
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000006
+Data Frame - 0.000016
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000005
+Data Frame - 0.000016
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000005
+Data Frame - 0.000016
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000006
+Data Frame - 0.000016
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000005
+Data Frame - 0.000017
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000005
+Data Frame - 0.000018
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000006
+Data Frame - 0.000032
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000007
+Data Frame - 0.000017
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000005
+Data Frame - 0.000016
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000005
+Data Frame - 0.000018
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000004
+Data Frame - 0.000016
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000005
+Data Frame - 0.000017
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000005
+Data Frame - 0.000018
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000005
+Data Frame - 0.000017
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000005
+Data Frame - 0.000018
+Data well formed...
+Data valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Header Frame - 0.000005
+Command Frame - 0.000012
+Command well formed...
+Command valid!
+Current matrix[i][0]=241, global = 241
+Now matrix[i][0]=241, global =241
+Read 256 packets, 256 valid
